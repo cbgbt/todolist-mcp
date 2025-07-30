@@ -1,0 +1,42 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cargo build:*)",
+      "Bash(cargo test:*)",
+      "Bash(cargo clippy:*)",
+      "Bash(cargo fmt:*)",
+      "Bash(cargo deny:*)",
+      "Bash(uv run ruff:*)",
+      "Bash(uvx ruff:*)"
+    ]
+  },
+  "includeCoAuthoredBy": false,
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|MultiEdit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run ./.agents/hooks/pre-tool-use/protect-sensitive-files.py"
+          },
+          {
+            "type": "command",
+            "command": "uv run ./.agents/hooks/pre-tool-use/check-comment-usefulness.py"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run ./.agents/hooks/post-tool-use/check-code-style.py"
+          }
+        ]
+      }
+    ]
+  }
+}

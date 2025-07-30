@@ -1,0 +1,23 @@
+[package]
+name = "todolist-mcp"
+version = "0.1.0"
+authors = ["Sean P. Kelly <cbgbt@cabbage.bot>"]
+description = "Simple MCP server for displaying planned tasks"
+keywords = ["mcp"]
+edition = "2024"
+license = "MIT"
+
+[dependencies]
+bon = "3"
+nutype = { version = "0.6", features = ["serde"] }
+rmcp = { version = "0.3", features = ["server", "macros", "transport-io"] }
+schemars = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+snafu = "0.8"
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "io-std"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
+
+[dev-dependencies]
+rmcp = { version = "0.3", features = ["server", "macros", "client"] }

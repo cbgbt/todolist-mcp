@@ -1,0 +1,18 @@
+# Ignore build artifacts
+target/
+
+# Ignore development files
+.git/
+.gitignore
+*.swp
+*.swo
+*~
+
+# Ignore documentation that's not needed in the image
+*.md
+.agents/
+
+# Ignore any local configuration
+.env
+.vscode/
+.idea/

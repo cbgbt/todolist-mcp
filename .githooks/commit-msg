@@ -1,0 +1,5 @@
+#!/bin/bash
+set -e
+
+# Use cocogitto to check the commit message
+cog verify "$(<"$1")"

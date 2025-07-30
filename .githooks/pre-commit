@@ -1,0 +1,7 @@
+#!/bin/bash
+set -e
+
+CARGO_BUILD_RUSTFLAGS='-D warnings' cargo build -q
+cargo test -q
+cargo clippy -q
+cargo fmt -q --check
