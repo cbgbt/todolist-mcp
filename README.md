@@ -6,15 +6,23 @@ A Model Context Protocol (MCP) server that provides a structured todo list tool 
 
 ### Installing via Claude Code
 
-To use with Claude Code, install the binary:
-
 ```bash
-cargo install --locked todolist-mcp
+$ claude mcp add todolist -- docker run -i --rm ghcr.io/cbgbt/todolist-mcp:latest
 ```
 
-Then configure Claude Code:
+### Installing via Q Developer CLI
 
-```bash
-$ claude mcp add todolist -- todolist-mcp
+Update your MCP server configuration to match the following:
+
+```json
+{
+  "mcpServers": {
+    "todolist": {
+      "command": "docker",
+      "args": ["run", "-i", "--rm", "ghcr.io/cbgbt/todolist-mcp:latest"]
+    }
+  }
+}
 ```
+
 
