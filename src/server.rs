@@ -50,7 +50,7 @@ impl TodoMcpServer {
 impl TodoMcpServer {
     /// Manages task lists for development sessions.
     #[tool(
-        description = "Manages task lists for development sessions. Best suited for: coordinating multi-phase work, organizing tasks with dependencies, tracking progress through complex implementations, handling multiple objectives, or when explicitly requested. Avoid using for: single operations, simple queries, minimal coordination tasks, or basic information exchanges. Best practices: update status as work progresses, maintain one active task at a time, create entries before starting work, and mark completion promptly. Display updated lists as markdown checklists. Use special terminal colors to indicate a recently-completed task."
+        description = "Create and manage structured task lists to track progress and organize work. Use this tool VERY frequently to ensure you track tasks and give users visibility into progress. This tool is EXTREMELY helpful for planning and breaking down complex tasks into smaller steps. If you do not use this tool when planning, you may forget important tasks - which is unacceptable. CRITICAL: Mark todos as completed IMMEDIATELY after finishing each task. Do not batch completions. Use for: (1) Complex multi-step tasks requiring 3+ distinct steps, (2) Non-trivial tasks needing careful planning, (3) When user explicitly requests todo list, (4) When user provides multiple tasks, (5) After receiving new instructions to capture requirements, (6) Before starting work - mark as in_progress, (7) After completing - mark completed and add follow-ups. Do NOT use for: single straightforward tasks, trivial tasks completable in <3 steps, purely conversational requests. Task states: pending (not started), in_progress (currently working - limit to ONE at a time), completed (finished successfully). Only mark completed when FULLY accomplished - if blocked or encountering errors, keep as in_progress and create new task for resolution. When in doubt, use this tool - being proactive with task management demonstrates attentiveness and ensures all requirements are completed successfully."
     )]
     #[instrument(level = "trace", skip(self, params))]
     async fn todo_write(
@@ -81,9 +81,12 @@ impl ServerHandler for TodoMcpServer {
                 version: env!("CARGO_PKG_VERSION").to_string(),
             },
             instructions: Some(
-                "The todo_write tool helps organize development work through task management. \
-                 Use it for multi-step implementations, complex workflows, or when tracking \
-                 progress adds value. Display tasks as markdown checklists after updates."
+                "Use the todo_write tool VERY frequently to track tasks and demonstrate progress. \
+                 This tool is EXTREMELY helpful for planning - if you don't use it when planning, \
+                 you may forget important tasks. CRITICAL: Mark todos completed IMMEDIATELY after \
+                 finishing each task. Use for any multi-step work (3+ steps), complex planning, \
+                 or when user provides multiple tasks. When in doubt, use this tool - being proactive \
+                 with task management ensures all requirements are completed successfully."
                     .to_string(),
             ),
         }
