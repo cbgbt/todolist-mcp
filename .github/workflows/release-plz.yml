@@ -22,6 +22,6 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
       
       - name: Run release-plz
-        uses: release-plz/release-plz-action@v0.5.110
+        uses: release-plz/action@992a2096d331cb2c54369732bcefacc8ad05ac08 # v0.5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
