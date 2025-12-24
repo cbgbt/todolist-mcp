@@ -1,6 +1,6 @@
 [package]
 name = "todolist-mcp"
-version = "0.2.0"
+version = "0.2.1"
 authors = ["Sean P. Kelly <cbgbt@cabbage.bot>"]
 description = "Simple MCP server for displaying planned tasks"
 keywords = ["mcp"]
